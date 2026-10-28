@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Fundo escuro com corte tático -->
+  <rect width="64" height="64" rx="14" fill="#080d12"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" stroke="#ff4655" stroke-width="2" stroke-opacity="0.8"/>
+  
+  <!-- Brilho vermelho de fundo -->
+  <circle cx="32" cy="32" r="20" fill="#ff4655" fill-opacity="0.2" filter="blur(8px)"/>
+
+  <!-- Letra A estilizada tática (ATOM) -->
+  <path d="M32 10L14 52H24L27.5 42H36.5L40 52H50L32 10ZM32 24L34.8 34H29.2L32 24Z" fill="#ff4655"/>
+  <path d="M29.5 35.5H34.5L32 26.5L29.5 35.5Z" fill="#ffffff"/>
+  
+  <!-- Ponto tático #zip no canto -->
+  <circle cx="48" cy="16" r="3.5" fill="#00f5d4"/>
+</svg>
