@@ -203,7 +203,7 @@
                                     </div>
                                     <div class="flex justify-between items-center text-sm">
                                         <span class="text-gray-400">Função Principal:</span>
-                                        <span class="font-bold text-valRed font-tactical">Duelista / Iniciador</span>
+                                        <span class="font-bold text-valRed font-tactical">Iniciador / Flex</span>
                                     </div>
                                     <div class="flex justify-between items-center text-sm">
                                         <span class="text-gray-400">Canal Twitch:</span>
@@ -213,7 +213,7 @@
                                     </div>
                                     <div class="flex justify-between items-center text-sm">
                                         <span class="text-gray-400">Tracker Network:</span>
-                                        <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview" target="_blank" class="font-mono text-xs text-amber-400 font-semibold hover:underline flex items-center gap-1">
+                                        <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" class="font-mono text-xs text-amber-400 font-semibold hover:underline flex items-center gap-1">
                                             tracker.gg/profile <i data-lucide="external-link" class="w-3 h-3"></i>
                                         </a>
                                     </div>
@@ -321,7 +321,7 @@
                         <button onclick="toggleEditStatsModal()" class="bg-valCard hover:bg-gray-700 text-gray-300 hover:text-white px-4 py-2.5 rounded font-tactical text-xs font-bold uppercase tracking-wider border border-gray-700 flex items-center gap-2 transition">
                             <i data-lucide="edit-3" class="w-4 h-4"></i> Ajustar Dados
                         </button>
-                        <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview" target="_blank" 
+                        <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" 
                            class="val-clip-sm bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white px-5 py-2.5 font-tactical text-sm font-bold tracking-wider uppercase flex items-center gap-2 shadow-lg transition transform hover:-translate-y-0.5">
                             <span>Abrir Perfil no Tracker.gg</span>
                             <i data-lucide="external-link" class="w-4 h-4"></i>
@@ -333,45 +333,45 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
                     
                     <!-- Elo / Rank Atual -->
-                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-valRed relative">
+                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-amber-600 relative">
                         <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Rank Atual</span>
-                        <div id="statRank" class="font-tactical text-xl sm:text-2xl font-bold text-white mt-1">IMORTAL 1</div>
-                        <span class="text-[10px] text-valRed font-mono mt-1 block">Competitivo Atual</span>
+                        <div id="statRank" class="font-tactical text-xl sm:text-2xl font-bold text-amber-500 mt-1">BRONZE 3</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Rumo ao Prata</span>
                     </div>
 
                     <!-- K/D Ratio -->
                     <div class="bg-valCard p-5 rounded-lg border-t-2 border-valCyan relative">
                         <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">K/D Ratio</span>
-                        <div id="statKD" class="font-tactical text-2xl sm:text-3xl font-bold text-valCyan mt-1">1.28</div>
-                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Top 7% no Brasil</span>
+                        <div id="statKD" class="font-tactical text-2xl sm:text-3xl font-bold text-valCyan mt-1">0.63</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Foco em Suporte</span>
                     </div>
 
                     <!-- Headshot % -->
-                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-amber-500 relative">
+                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-valRed relative">
                         <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Headshot %</span>
-                        <div id="statHS" class="font-tactical text-2xl sm:text-3xl font-bold text-amber-400 mt-1">31.4%</div>
-                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Precisão Alta</span>
+                        <div id="statHS" class="font-tactical text-2xl sm:text-3xl font-bold text-valRed mt-1">13.9%</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Precisão Tracker</span>
                     </div>
 
-                    <!-- Dano Médio / Round (ADR) -->
+                    <!-- ACS (Average Combat Score) -->
                     <div class="bg-valCard p-5 rounded-lg border-t-2 border-purple-500 relative">
-                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Dano / Round</span>
-                        <div id="statADR" class="font-tactical text-2xl sm:text-3xl font-bold text-purple-400 mt-1">164.8</div>
-                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">ADR Médio</span>
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Pontuação / ACS</span>
+                        <div id="statADR" class="font-tactical text-2xl sm:text-3xl font-bold text-purple-400 mt-1">140.7</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Pontuação de Combate</span>
                     </div>
 
                     <!-- Win Rate % -->
                     <div class="bg-valCard p-5 rounded-lg border-t-2 border-green-500 relative">
                         <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Taxa de Vitória</span>
-                        <div id="statWinRate" class="font-tactical text-2xl sm:text-3xl font-bold text-green-400 mt-1">57.2%</div>
-                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Mais vitórias que derrotas</span>
+                        <div id="statWinRate" class="font-tactical text-2xl sm:text-3xl font-bold text-green-400 mt-1">56.4%</div>
+                        <span class="text-[10px] text-green-400 font-mono mt-1 block">56% Mais Vitórias!</span>
                     </div>
 
-                    <!-- Partidas / Horas -->
+                    <!-- Partidas / Status -->
                     <div class="bg-valCard p-5 rounded-lg border-t-2 border-blue-500 relative">
-                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Partidas Ativas</span>
-                        <div id="statMatches" class="font-tactical text-2xl sm:text-3xl font-bold text-blue-400 mt-1">156</div>
-                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Ato Competitivo</span>
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Status Competitivo</span>
+                        <div id="statMatches" class="font-tactical text-xl sm:text-2xl font-bold text-blue-400 mt-1">ATIVO</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Temporada Oficial</span>
                     </div>
 
                 </div>
@@ -383,60 +383,60 @@
                     <div class="lg:col-span-7 bg-valCard p-6 val-clip border border-gray-800">
                         <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
                             <h3 class="font-tactical text-lg font-bold text-white uppercase flex items-center gap-2">
-                                <i data-lucide="users" class="w-5 h-5 text-valRed"></i> Agentes Mais Jogados
+                                <i data-lucide="users" class="w-5 h-5 text-valRed"></i> Agentes Principais (Mains)
                             </h3>
-                            <span class="text-xs font-mono text-gray-400">Tempo de Jogo</span>
+                            <span class="text-xs font-mono text-gray-400">Tracker Oficial</span>
                         </div>
 
                         <div class="space-y-4">
-                            <!-- Agente 1: Jett -->
-                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-gray-800/80">
+                            <!-- Agente 1: KAY/O -->
+                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-cyan-800/40">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded bg-cyan-900/40 border border-cyan-500/40 flex items-center justify-center font-tactical font-bold text-cyan-400">
-                                        JET
+                                    <div class="w-10 h-10 rounded bg-cyan-950/60 border border-cyan-500/50 flex items-center justify-center font-tactical font-bold text-cyan-400 text-sm">
+                                        KAY
                                     </div>
                                     <div>
-                                        <div class="font-tactical font-bold text-white text-base">JETT</div>
-                                        <div class="text-xs text-gray-400 font-mono">Duelista • 68 Partidas</div>
+                                        <div class="font-tactical font-bold text-white text-base">KAY/O</div>
+                                        <div class="text-xs text-gray-400 font-mono">Iniciador • Supressão & Facas de Detecção</div>
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="font-tactical font-bold text-valCyan">1.35 K/D</div>
-                                    <div class="text-xs text-green-400 font-mono">59% Win Rate</div>
+                                    <div class="font-tactical font-bold text-cyan-400">MAIN 1</div>
+                                    <div class="text-xs text-green-400 font-mono">Suporte ao Time</div>
                                 </div>
                             </div>
 
-                            <!-- Agente 2: Reyna -->
-                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-gray-800/80">
+                            <!-- Agente 2: Omen -->
+                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-purple-800/40">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded bg-purple-900/40 border border-purple-500/40 flex items-center justify-center font-tactical font-bold text-purple-400">
-                                        REY
-                                    </div>
-                                    <div>
-                                        <div class="font-tactical font-bold text-white text-base">REYNA</div>
-                                        <div class="text-xs text-gray-400 font-mono">Duelista • 45 Partidas</div>
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-tactical font-bold text-purple-400">1.41 K/D</div>
-                                    <div class="text-xs text-green-400 font-mono">57% Win Rate</div>
-                                </div>
-                            </div>
-
-                            <!-- Agente 3: Omen -->
-                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-gray-800/80">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded bg-blue-900/40 border border-blue-500/40 flex items-center justify-center font-tactical font-bold text-blue-400">
+                                    <div class="w-10 h-10 rounded bg-purple-950/60 border border-purple-500/50 flex items-center justify-center font-tactical font-bold text-purple-400 text-sm">
                                         OME
                                     </div>
                                     <div>
                                         <div class="font-tactical font-bold text-white text-base">OMEN</div>
-                                        <div class="text-xs text-gray-400 font-mono">Controlador • 28 Partidas</div>
+                                        <div class="text-xs text-gray-400 font-mono">Controlador • Smokes Táticas & Paranoia</div>
                                     </div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="font-tactical font-bold text-blue-400">1.18 K/D</div>
-                                    <div class="text-xs text-green-400 font-mono">55% Win Rate</div>
+                                    <div class="font-tactical font-bold text-purple-400">MAIN 2</div>
+                                    <div class="text-xs text-green-400 font-mono">Domínio de Mapa</div>
+                                </div>
+                            </div>
+
+                            <!-- Agente 3: Phoenix -->
+                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-amber-800/40">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded bg-amber-950/60 border border-amber-500/50 flex items-center justify-center font-tactical font-bold text-amber-400 text-sm">
+                                        PHX
+                                    </div>
+                                    <div>
+                                        <div class="font-tactical font-bold text-white text-base">PHOENIX</div>
+                                        <div class="text-xs text-gray-400 font-mono">Duelista • Flashes Curvos & Entrada Quente</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-tactical font-bold text-amber-400">MAIN 3</div>
+                                    <div class="text-xs text-green-400 font-mono">Entry Fragger</div>
                                 </div>
                             </div>
                         </div>
@@ -490,7 +490,7 @@
                             <span class="flex items-center gap-1.5 font-mono">
                                 <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i> Integrado ao Tracker.gg
                             </span>
-                            <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview" target="_blank" class="text-valRed hover:underline font-bold font-tactical uppercase">
+                            <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" class="text-valRed hover:underline font-bold font-tactical uppercase">
                                 Ver Detalhes ➜
                             </a>
                         </div>
@@ -649,7 +649,7 @@
                     </a>
 
                     <!-- Tracker Network -->
-                    <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview" target="_blank" class="bg-valCard hover:bg-red-950/40 border border-gray-800 hover:border-red-500 p-5 rounded text-center transition group">
+                    <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" class="bg-valCard hover:bg-red-950/40 border border-gray-800 hover:border-red-500 p-5 rounded text-center transition group">
                         <i data-lucide="crosshair" class="w-8 h-8 text-valRed mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
                         <span class="font-tactical font-bold text-white block">Tracker.gg</span>
                         <span class="text-[11px] text-gray-400 font-mono">ATOM#zip</span>
@@ -695,7 +695,7 @@
             <div class="flex items-center justify-center gap-2 font-tactical font-bold text-sm text-gray-300">
                 <span class="text-valRed">ATOM#zip</span> • TRANSMISSÕES DE GAMES NA TWITCH (atom_zip)
             </div>
-            <p>© 2026 ATOM#zip. Todos os direitos reservados. Perfil do Tracker.gg: <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview" target="_blank" class="text-valCyan underline">ATOM#zip</a>.</p>
+            <p>© 2026 ATOM#zip. Todos os direitos reservados. Perfil do Tracker.gg: <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" class="text-valCyan underline">ATOM#zip</a>.</p>
         </div>
     </footer>
 
@@ -712,31 +712,31 @@
             <div class="space-y-3 text-sm">
                 <div>
                     <label class="block text-gray-400 text-xs font-mono mb-1">Rank / Elo Atual:</label>
-                    <input id="inputRank" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-tactical focus:border-valRed focus:outline-none" value="IMORTAL 1">
+                    <input id="inputRank" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-tactical focus:border-valRed focus:outline-none" value="BRONZE 3">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
                         <label class="block text-gray-400 text-xs font-mono mb-1">K/D Ratio:</label>
-                        <input id="inputKD" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="1.28">
+                        <input id="inputKD" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="0.63">
                     </div>
                     <div>
                         <label class="block text-gray-400 text-xs font-mono mb-1">Headshot %:</label>
-                        <input id="inputHS" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="31.4%">
+                        <input id="inputHS" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="13.9%">
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-gray-400 text-xs font-mono mb-1">Dano / Round (ADR):</label>
-                        <input id="inputADR" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="164.8">
+                        <label class="block text-gray-400 text-xs font-mono mb-1">Pontuação / ACS:</label>
+                        <input id="inputADR" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="140.7">
                     </div>
                     <div>
                         <label class="block text-gray-400 text-xs font-mono mb-1">Taxa de Vitória %:</label>
-                        <input id="inputWinRate" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="57.2%">
+                        <input id="inputWinRate" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="56.4%">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-gray-400 text-xs font-mono mb-1">Total de Partidas:</label>
-                    <input id="inputMatches" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="156">
+                    <label class="block text-gray-400 text-xs font-mono mb-1">Status Competitivo:</label>
+                    <input id="inputMatches" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="ATIVO">
                 </div>
             </div>
 

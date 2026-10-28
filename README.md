@@ -3,7 +3,12 @@
 Site moderno, responsivo e estilizado com a estética do **Valorant** para o canal de lives do **ATOM#zip** na Twitch.
 
 - **Canal Oficial da Twitch:** [https://www.twitch.tv/atom_zip](https://www.twitch.tv/atom_zip)
-- **Perfil no Tracker Network:** [https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview](https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview)
+- **Rank Atual:** Bronze 3 (Rumo ao Prata)
+- **K/D Ratio:** 0.63
+- **Headshot %:** 13.9%
+- **ACS:** 140.7
+- **Taxa de Vitória:** 56.4%
+- **Mains:** KAY/O (Iniciador), Omen (Controlador), Phoenix (Duelista)
 
 ---
 
@@ -22,7 +27,7 @@ Site moderno, responsivo e estilizado com a estética do **Valorant** para o can
    - Botões diretos para seguir e abrir a Twitch em nova aba.
 
 2. **Seção Valorant Tracker Network Completa:**
-   - Link direto e verificado para o perfil [ATOM#zip no Tracker.gg](https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview).
+   - Link direto e verificado para o perfil [ATOM#zip no Tracker.gg](https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319).
    - Botão para copiar a tag Riot ID (`ATOM#zip`) com 1 clique.
    - Cards com **Elo/Rank Atual, K/D Ratio, Headshot %, Dano Médio/Round (ADR), Win Rate % e Partidas**.
    - Seção de **Top Agentes** (Jett, Reyna, Omen) e **Precisão de Armas** (Vandal, Phantom, Operator).
