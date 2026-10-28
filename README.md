@@ -15,7 +15,7 @@ Site moderno, responsivo e estruturado em formato **Multi-Gaming Portal** para o
    - Player ao vivo da Twitch (`atom_zip`) com chat integrado.
    - **Catálogo de Jogos da Live:**
      - 🎯 **Valorant:** Botão com link direto para a página dedicada [`valorant.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/valorant.html).
-     - 🎈 **Bloons TD 6:** Estratégia, CHIMPS, Paragons, Boss Events e partidas cooperativas.
+     - 🎈 **Bloons TD 6:** Botão com link direto para a página dedicada [`bloons.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/bloons.html).
      - 💥 **Counter-Strike 2:** Premier, ranked e clutches.
      - 👻 **Terror & Sobrevivência:** Phasmophobia, Lethal Company, madrugadas do susto.
      - 👥 **Jogando com Viewers:** Gartic, Roblox, Minecraft, lobbies abertos no Discord.
@@ -26,8 +26,15 @@ Site moderno, responsivo e estruturado em formato **Multi-Gaming Portal** para o
 
 2. **[`valorant.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/valorant.html) (Hub Exclusivo do Valorant):**
    - Estética tática oficial do Valorant.
-   - Link de volta para o Hub Principal.
    - Dados reais do Tracker.gg: **Bronze 3**, K/D 0.63, Headshot 13.9%, Win Rate 56.4%, ACS 140.7.
    - Mains: **KAY/O**, **Omen** e **Phoenix**.
    - Painel interativo para ajustar estatísticas.
    - Sensibilidade e periféricos.
+
+3. **[`bloons.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/bloons.html) (Hub Exclusivo do Bloons TD 6):**
+   - Estética temática Bloons TD 6 (Dourado, Verde Selva e Balões).
+   - Conquistas no jogo: Nível, Medalhas CHIMPS, Paragons desbloqueadas e Boss Events.
+   - Heróis principais: Sauda, Geraldo e Benjamin.
+   - Torres e Paragons favoritas (Navarch, Sun God, Banana Farm).
+   - Passo a passo interativo de como entrar nas salas de Co-op na live.
+   - Painel interativo para ajustar conquistas.

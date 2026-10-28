@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATOM#zip | Bloons TD 6 Hub & Estratégias</title>
+    
+    <!-- Google Fonts: Chakra Petch + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        btdDark: '#0e1712',
+                        btdDarker: '#080d0a',
+                        btdCard: '#15241b',
+                        btdCardHover: '#1c3024',
+                        btdGold: '#f59e0b',
+                        btdGoldHover: '#d97706',
+                        btdGreen: '#10b981',
+                        btdRed: '#ef4444',
+                        btdBlue: '#38bdf8',
+                    },
+                    fontFamily: {
+                        tactical: ['"Chakra Petch"', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .clip-corner {
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+        .clip-sm {
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+        }
+        
+        .bg-btd-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+        }
+
+        .glow-gold {
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.35);
+        }
+        .glow-green {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.35);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080d0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f59e0b;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-btdDarker text-gray-200 font-sans selection:bg-btdGold selection:text-black bg-btd-grid min-h-screen flex flex-col justify-between">
+
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-btdDarker/90 border-b border-btdGold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo / Nick -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-btdGold flex items-center justify-center font-tactical font-bold text-black text-xl clip-sm group-hover:rotate-6 transition-transform">
+                    🎈
+                </div>
+                <div>
+                    <span class="font-tactical text-2xl font-bold tracking-wider text-white">ATOM</span>
+                    <span class="text-xs font-bold text-btdGold tracking-widest block -mt-1 font-tactical">#zip • BLOONS TD 6</span>
+                </div>
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-8 font-tactical text-sm tracking-wider uppercase font-semibold">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Hub Principal
+                </a>
+                <a href="#live" class="hover:text-btdGold transition-colors flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> Live Ao Vivo
+                </a>
+                <a href="#conquistas" class="text-btdGold hover:text-white transition-colors flex items-center gap-1">
+                    <i data-lucide="award" class="w-4 h-4"></i> Conquistas & CHIMPS
+                </a>
+                <a href="#torres" class="hover:text-btdGreen transition-colors">Torres & Heróis</a>
+                <a href="#coop" class="hover:text-btdGold transition-colors">Jogar Co-op</a>
+                <a href="#apoie" class="hover:text-btdGold transition-colors">Apoiar (Pix)</a>
+            </nav>
+
+            <!-- Botão Twitch Oficial -->
+            <div class="flex items-center gap-3">
+                <a href="https://www.twitch.tv/atom_zip" target="_blank" 
+                   class="clip-sm bg-btdGold hover:bg-btdGoldHover text-black font-tactical font-bold px-5 py-2.5 text-sm uppercase flex items-center gap-2 glow-gold transition-all transform hover:-translate-y-0.5">
+                    <i data-lucide="tv" class="w-4 h-4"></i>
+                    <span>twitch.tv/atom_zip</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- HERO SECTION: BLOONS TD 6 -->
+        <section class="relative pt-12 pb-20 overflow-hidden">
+            <!-- Glow Decorativo -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[320px] bg-btdGold/15 blur-[130px] rounded-full pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Apresentação Bloons -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-btdCard border border-btdGold/40 clip-sm text-xs font-tactical uppercase tracking-widest text-btdGold">
+                            <span class="w-2 h-2 rounded-full bg-btdGold animate-pulse"></span>
+                            Tower Defense • Modo CHIMPS • Boss Events
+                        </div>
+
+                        <h1 class="font-tactical text-5xl sm:text-7xl font-extrabold text-white tracking-tight uppercase leading-none">
+                            Estourando Balões com <br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-btdGold via-amber-400 to-emerald-400">ATOM#zip</span>
+                        </h1>
+
+                        <p class="text-gray-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            O melhor do <strong>Bloons TD 6</strong> na Twitch! Estratégias milimétricas no modo CHIMPS, criação de torres <strong>Paragons nível máximo</strong>, chefes mundiais insanos e salas cooperativas abertas para jogar junto com a comunidade.
+                        </p>
+
+                        <!-- Botões de Ação -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#live" class="clip-corner bg-btdGold hover:bg-btdGoldHover text-black px-8 py-3.5 font-tactical font-bold text-base tracking-wider uppercase flex items-center gap-2 glow-gold transition-all">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+                                Assistir Live
+                            </a>
+                            <a href="#coop" class="clip-corner bg-emerald-950/60 border border-btdGreen text-btdGreen hover:bg-btdGreen hover:text-black px-7 py-3.5 font-tactical font-bold text-base tracking-wider uppercase transition-all flex items-center gap-2">
+                                <i data-lucide="users" class="w-4 h-4"></i>
+                                Entrar no Co-op da Live
+                            </a>
+                        </div>
+
+                        <!-- Stats Rápidas -->
+                        <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg mx-auto lg:mx-0 border-t border-gray-800">
+                            <div>
+                                <span class="font-tactical text-2xl sm:text-3xl font-bold text-btdGold block">CHIMPS</span>
+                                <span class="text-xs text-gray-400 uppercase tracking-wider font-mono">Modo Difícil</span>
+                            </div>
+                            <div>
+                                <span class="font-tactical text-2xl sm:text-3xl font-bold text-btdGreen block">PARAGONS</span>
+                                <span class="text-xs text-gray-400 uppercase tracking-wider font-mono">Poder Máximo</span>
+                            </div>
+                            <div>
+                                <span class="font-tactical text-2xl sm:text-3xl font-bold text-btdBlue block">CO-OP 4P</span>
+                                <span class="text-xs text-gray-400 uppercase tracking-wider font-mono">Com Viewers</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Visual do Jogador BTD6 -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-btdGold to-emerald-600 clip-corner opacity-70 blur-sm"></div>
+                            
+                            <div class="relative bg-btdCard p-6 clip-corner border border-btdGold/40 space-y-6">
+                                <div class="flex items-center justify-between border-b border-gray-700/60 pb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-full bg-btdDark border-2 border-btdGold flex items-center justify-center font-tactical font-bold text-xl text-btdGold">
+                                            🐵
+                                        </div>
+                                        <div>
+                                            <h3 class="font-tactical text-xl font-bold text-white">ATOM#zip</h3>
+                                            <p class="text-xs text-btdGold font-mono font-bold">MESTRE DAS TORRES</p>
+                                        </div>
+                                    </div>
+                                    <span class="px-2.5 py-1 bg-emerald-950 text-emerald-400 border border-emerald-800 text-xs font-tactical font-bold uppercase rounded">
+                                        Ao Vivo
+                                    </span>
+                                </div>
+
+                                <div class="bg-btdDark p-4 rounded-lg space-y-3 border border-gray-800">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-400">Jogo Atual:</span>
+                                        <span class="font-bold text-btdGold font-tactical tracking-wide">BLOONS TD 6</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-400">Herói Favorito:</span>
+                                        <span id="heroDisplay" class="font-bold text-btdGreen font-tactical">SAUDA / GERALDO</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-400">Modo Favorito:</span>
+                                        <span class="font-bold text-white font-tactical">CHIMPS & BOSSES</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-400">Twitch Oficial:</span>
+                                        <a href="https://www.twitch.tv/atom_zip" target="_blank" class="font-mono text-xs text-btdGold font-semibold hover:underline">
+                                            twitch.tv/atom_zip
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="text-xs text-gray-500 font-mono flex items-center justify-between pt-2">
+                                    <span>META: BAD DERROTADO</span>
+                                    <span>ESTATUTO: MACACO MESTRE</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: TRANSMISSÃO AO VIVO (TWITCH EMBED) -->
+        <section id="live" class="py-16 bg-btdDark relative border-y border-btdGold/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                    <div>
+                        <div class="text-btdGold font-tactical font-bold text-sm tracking-widest uppercase mb-1 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
+                            Live Ao Vivo de Bloons TD 6
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-tactical font-bold text-white uppercase">Assista Ao Vivo na Twitch</h2>
+                    </div>
+
+                    <div class="mt-4 md:mt-0 flex items-center gap-3">
+                        <a href="https://www.twitch.tv/atom_zip" target="_blank" 
+                           class="bg-[#9146ff] hover:bg-[#772ce8] text-white px-5 py-2.5 rounded text-xs font-tactical font-bold uppercase tracking-wider flex items-center gap-2 transition shadow-lg">
+                            <i data-lucide="tv" class="w-4 h-4"></i>
+                            Seguir atom_zip na Twitch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Container do Player e Chat -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                    
+                    <!-- Player da Live -->
+                    <div class="lg:col-span-8 bg-black rounded-lg overflow-hidden border border-gray-800 shadow-2xl aspect-video relative group">
+                        <iframe
+                            id="twitchPlayer"
+                            src="https://player.twitch.tv/?channel=atom_zip&parent=localhost&parent=127.0.0.1&muted=false"
+                            class="w-full h-full"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Chat da Twitch -->
+                    <div class="lg:col-span-4 bg-btdCard rounded-lg border border-gray-800 flex flex-col h-[420px] lg:h-auto overflow-hidden">
+                        <div class="bg-btdDarker px-4 py-2.5 border-b border-gray-800 flex items-center justify-between">
+                            <span class="font-tactical text-sm font-bold uppercase text-white flex items-center gap-2">
+                                <i data-lucide="message-square" class="w-4 h-4 text-btdGold"></i> Chat da Live
+                            </span>
+                            <span class="text-[11px] text-green-400 font-mono">Conectado</span>
+                        </div>
+                        <div class="flex-grow bg-black">
+                            <iframe
+                                id="twitchChat"
+                                src="https://www.twitch.tv/embed/atom_zip/chat?parent=localhost&parent=127.0.0.1&darkpopout"
+                                class="w-full h-full">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-btdDarker/80 border border-gray-800 rounded flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-2">
+                    <p class="flex items-center gap-1.5">
+                        <i data-lucide="info" class="w-4 h-4 text-btdGold"></i>
+                        <span>Transmitindo estratégias, mapas avançados e desafios de Bloons TD 6 com o chat!</span>
+                    </p>
+                    <a href="https://www.twitch.tv/atom_zip" target="_blank" class="text-btdGold hover:underline font-bold flex items-center gap-1">
+                        Abrir direto na Twitch <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: CONQUISTAS & ESTATÍSTICAS BTD6 -->
+        <section id="conquistas" class="py-20 relative bg-btdDarker">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 border-b border-gray-800 pb-6 gap-4">
+                    <div>
+                        <div class="flex items-center gap-2 text-btdGold font-tactical font-bold text-sm tracking-widest uppercase">
+                            <i data-lucide="award" class="w-4 h-4"></i> Desempenho no Jogo
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-tactical font-extrabold text-white uppercase mt-1">
+                            CONQUISTAS DO ATOM NO BTD6
+                        </h2>
+                        <p class="text-gray-400 text-sm mt-1">
+                            Acompanhe o progresso das medalhas, mapas zerados no CHIMPS e eventos de chefes.
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button onclick="toggleBloonsStatsModal()" class="bg-btdCard hover:bg-gray-800 text-btdGold border border-btdGold/40 px-4 py-2.5 rounded font-tactical text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition">
+                            <i data-lucide="edit-3" class="w-4 h-4"></i> Ajustar Conquistas
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARDS DE ESTATÍSTICAS -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-10">
+                    
+                    <div class="bg-btdCard p-5 rounded-lg border-t-2 border-btdGold">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Nível do Jogador</span>
+                        <div id="statLevel" class="font-tactical text-2xl sm:text-3xl font-bold text-btdGold mt-1">LVL 125+</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Rumo ao Veterano</span>
+                    </div>
+
+                    <div class="bg-btdCard p-5 rounded-lg border-t-2 border-btdRed">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Medalhas CHIMPS</span>
+                        <div id="statChimps" class="font-tactical text-2xl sm:text-3xl font-bold text-btdRed mt-1">18+</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Mapas Completados</span>
+                    </div>
+
+                    <div class="bg-btdCard p-5 rounded-lg border-t-2 border-btdGreen">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Paragons Ativas</span>
+                        <div id="statParagons" class="font-tactical text-2xl sm:text-3xl font-bold text-btdGreen mt-1">TODAS</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Grau Máximo 70+</span>
+                    </div>
+
+                    <div class="bg-btdCard p-5 rounded-lg border-t-2 border-purple-500">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Chefes Derrotados</span>
+                        <div id="statBosses" class="font-tactical text-2xl sm:text-3xl font-bold text-purple-400 mt-1">ELITE</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Bloonarius & Lych</span>
+                    </div>
+
+                    <div class="bg-btdCard p-5 rounded-lg border-t-2 border-blue-500">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Round Recorde</span>
+                        <div id="statRound" class="font-tactical text-2xl sm:text-3xl font-bold text-blue-400 mt-1">ROUND 260+</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Freeplay Insano</span>
+                    </div>
+
+                    <div class="bg-btdCard p-5 rounded-lg border-t-2 border-emerald-400">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Modo Co-op</span>
+                        <div id="statCoop" class="font-tactical text-2xl sm:text-3xl font-bold text-emerald-400 mt-1">ATIVO</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Lobbies na Live</span>
+                    </div>
+
+                </div>
+
+                <!-- LINHA 2: HERÓIS & COMBOS DE TORRES -->
+                <div id="torres" class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Heróis Principais -->
+                    <div class="lg:col-span-6 bg-btdCard p-6 clip-corner border border-gray-800">
+                        <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
+                            <h3 class="font-tactical text-lg font-bold text-white uppercase flex items-center gap-2">
+                                <i data-lucide="crown" class="w-5 h-5 text-btdGold"></i> Heróis Mais Utilizados
+                            </h3>
+                            <span class="text-xs font-mono text-gray-400">Estratégia</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Sauda -->
+                            <div class="bg-btdDark p-3.5 rounded flex items-center justify-between border border-amber-900/30">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded bg-amber-950/60 border border-amber-500/50 flex items-center justify-center font-tactical font-bold text-btdGold text-lg">
+                                        ⚔️
+                                    </div>
+                                    <div>
+                                        <div class="font-tactical font-bold text-white text-base">SAUDA</div>
+                                        <div class="text-xs text-gray-400 font-mono">Dano Corpo a Corpo • Domínio do Early Game no CHIMPS</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-btdGold font-tactical font-bold uppercase px-2 py-1 bg-amber-950/40 rounded">TOP PICK</span>
+                            </div>
+
+                            <!-- Geraldo -->
+                            <div class="bg-btdDark p-3.5 rounded flex items-center justify-between border border-purple-900/30">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded bg-purple-950/60 border border-purple-500/50 flex items-center justify-center font-tactical font-bold text-purple-400 text-lg">
+                                        🏺
+                                    </div>
+                                    <div>
+                                        <div class="font-tactical font-bold text-white text-base">GERALDO</div>
+                                        <div class="text-xs text-gray-400 font-mono">Comerciante Místico • Itens de Paragon e Buffs</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-purple-400 font-tactical font-bold uppercase px-2 py-1 bg-purple-950/40 rounded">BOSS FIGHTS</span>
+                            </div>
+
+                            <!-- Benjamin -->
+                            <div class="bg-btdDark p-3.5 rounded flex items-center justify-between border border-emerald-900/30">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded bg-emerald-950/60 border border-emerald-500/50 flex items-center justify-center font-tactical font-bold text-btdGreen text-lg">
+                                        💻
+                                    </div>
+                                    <div>
+                                        <div class="font-tactical font-bold text-white text-base">BENJAMIN</div>
+                                        <div class="text-xs text-gray-400 font-mono">Hacker de Economia • Geração de Dinheiro em Massa</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-btdGreen font-tactical font-bold uppercase px-2 py-1 bg-emerald-950/40 rounded">ECONOMIA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Torres & Paragons -->
+                    <div class="lg:col-span-6 bg-btdCard p-6 clip-corner border border-gray-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
+                                <h3 class="font-tactical text-lg font-bold text-white uppercase flex items-center gap-2">
+                                    <i data-lucide="zap" class="w-5 h-5 text-btdGreen"></i> Torres Favoritas na Live
+                                </h3>
+                                <span class="text-xs font-mono text-gray-400">Upgrades Tier 5</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="bg-btdDark p-3 rounded border border-gray-800">
+                                    <div class="flex justify-between items-center text-xs font-tactical font-bold text-white">
+                                        <span class="text-btdGold">🍌 BANANA FARM (MERCADO / BANCO)</span>
+                                        <span class="text-emerald-400">TIER 5 COMPLETO</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1">Essencial para farmar milhões de Monkey Money antes do round 80 para enfrentar os chefes.</p>
+                                </div>
+
+                                <div class="bg-btdDark p-3 rounded border border-gray-800">
+                                    <div class="flex justify-between items-center text-xs font-tactical font-bold text-white">
+                                        <span class="text-blue-400">⚓ NAVARCH OF THE SEAS (PARAGON MACACO PIRATA)</span>
+                                        <span class="text-blue-400">PUXA MOABs & BADs</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1">A paragon mais forte em mapas de água, capaz de pescar balões gigantes instantaneamente.</p>
+                                </div>
+
+                                <div class="bg-btdDark p-3 rounded border border-gray-800">
+                                    <div class="flex justify-between items-center text-xs font-tactical font-bold text-white">
+                                        <span class="text-btdRed">☀️ TEMPLO DO SOL / TRUE SUN GOD</span>
+                                        <span class="text-amber-400">SUPER MONKEY 5-2-0</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 mt-1">O ápice do poder no late game para bater os recordes de rounds mais altos da stream.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs text-gray-400 font-mono">
+                            <span>MODO PRINCIPAL: CHIMPS & CO-OP</span>
+                            <span class="text-btdGold font-bold">100% ESTRATÉGIA</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: JOGUE CO-OP COM O ATOM (VIEWERS) -->
+        <section id="coop" class="py-16 bg-btdDark border-t border-gray-800 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                
+                <div class="inline-flex p-3 bg-btdGold/10 rounded-full text-btdGold mb-4">
+                    <i data-lucide="users" class="w-8 h-8"></i>
+                </div>
+
+                <h2 class="text-3xl sm:text-4xl font-tactical font-bold text-white uppercase">Como Jogar Co-op na Live</h2>
+                <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                    Nas lives de <strong>Bloons TD 6</strong>, criamos salas personalizadas para até 4 jogadores simultâneos no chat da Twitch e no Discord!
+                </p>
+
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+                    <div class="bg-btdCard p-5 rounded border border-gray-800">
+                        <span class="text-btdGold font-tactical font-bold text-lg block">1. Abra o BTD6</span>
+                        <p class="text-xs text-gray-400 mt-2">No menu principal, clique no botão de <strong>Co-op (Cooperativo)</strong>.</p>
+                    </div>
+
+                    <div class="bg-btdCard p-5 rounded border border-gray-800">
+                        <span class="text-btdGreen font-tactical font-bold text-lg block">2. Pegue o Código</span>
+                        <p class="text-xs text-gray-400 mt-2">O <strong>ATOM</strong> coloca o código de 6 letras na tela da live e no chat da Twitch.</p>
+                    </div>
+
+                    <div class="bg-btdCard p-5 rounded border border-gray-800">
+                        <span class="text-btdBlue font-tactical font-bold text-lg block">3. Entre na Sala</span>
+                        <p class="text-xs text-gray-400 mt-2">Digite o código no jogo e prepare suas torres para estourar balões juntos!</p>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <a href="https://discord.gg" target="_blank" class="clip-sm bg-btdGold hover:bg-btdGoldHover text-black font-tactical font-bold px-6 py-3 uppercase text-sm inline-flex items-center gap-2 glow-gold transition">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        Entrar no Discord para avisos de Co-op
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: APOIE A LIVE (PIX / DOAÇÃO) -->
+        <section id="apoie" class="py-16 bg-btdDarker border-y border-btdGold/20 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                
+                <div class="inline-flex p-3 bg-btdGold/10 rounded-full text-btdGold mb-4">
+                    <i data-lucide="heart" class="w-8 h-8 fill-current"></i>
+                </div>
+
+                <h2 class="text-3xl sm:text-4xl font-tactical font-bold text-white uppercase">Apoie a Live do ATOM</h2>
+                <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                    Sua doação ajuda a adquirir novos jogos, passes e melhorar o setup de transmissões!
+                </p>
+
+                <div class="mt-8 bg-btdCard p-6 clip-corner max-w-lg mx-auto border border-btdGold/40">
+                    <span class="text-xs font-mono text-gray-400 uppercase block mb-1">Chave Pix (E-mail / Aleatória)</span>
+                    
+                    <div class="flex items-center justify-between bg-btdDarker p-3 rounded border border-gray-700">
+                        <code id="pixKey" class="text-sm font-mono text-btdGold truncate pr-2">seu-email-pix@aqui.com</code>
+                        <button onclick="copyPixKey()" class="bg-btdGold hover:bg-btdGoldHover text-black px-3 py-1.5 rounded text-xs font-tactical font-bold uppercase flex items-center gap-1.5 transition">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span id="copyBtnText">Copiar</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-btdDarker border-t border-gray-800 py-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
+            <div class="flex items-center justify-center gap-2 font-tactical font-bold text-sm text-gray-300">
+                <span class="text-btdGold">ATOM#zip</span> • TRANSMISSÕES DE BLOONS TD 6 NA TWITCH (atom_zip)
+            </div>
+            <p>© 2026 ATOM#zip. Bloons TD 6 é uma marca da Ninja Kiwi. Visite também o <a href="index.html" class="text-btdGold underline">Hub Principal</a> e a página de <a href="valorant.html" class="text-btdRed underline">Valorant</a>.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE EDIÇÃO DE STATS DO BTD6 -->
+    <div id="bloonsModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-btdCard p-6 max-w-md w-full clip-corner border border-btdGold/60 space-y-4">
+            <div class="flex items-center justify-between border-b border-gray-700 pb-3">
+                <h3 class="font-tactical font-bold text-white text-lg uppercase flex items-center gap-2">
+                    <i data-lucide="sliders" class="w-5 h-5 text-btdGold"></i> Conquistas no BTD6
+                </h3>
+                <button onclick="toggleBloonsStatsModal()" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="block text-gray-400 text-xs font-mono mb-1">Nível do Jogador:</label>
+                    <input id="inputLevel" type="text" class="w-full bg-btdDarker border border-gray-700 p-2 rounded text-white font-tactical focus:border-btdGold focus:outline-none" value="LVL 125+">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-gray-400 text-xs font-mono mb-1">Medalhas CHIMPS:</label>
+                        <input id="inputChimps" type="text" class="w-full bg-btdDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-btdGold focus:outline-none" value="18+">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-mono mb-1">Paragons:</label>
+                        <input id="inputParagons" type="text" class="w-full bg-btdDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-btdGold focus:outline-none" value="TODAS">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-gray-400 text-xs font-mono mb-1">Chefes Derrotados:</label>
+                        <input id="inputBosses" type="text" class="w-full bg-btdDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-btdGold focus:outline-none" value="ELITE">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-mono mb-1">Round Recorde:</label>
+                        <input id="inputRound" type="text" class="w-full bg-btdDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-btdGold focus:outline-none" value="ROUND 260+">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-400 text-xs font-mono mb-1">Herói Favorito:</label>
+                    <input id="inputHero" type="text" class="w-full bg-btdDarker border border-gray-700 p-2 rounded text-white font-tactical focus:border-btdGold focus:outline-none" value="SAUDA / GERALDO">
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-3 border-t border-gray-700">
+                <button onclick="toggleBloonsStatsModal()" class="px-4 py-2 text-xs font-tactical uppercase text-gray-400 hover:text-white">Cancelar</button>
+                <button onclick="saveBloonsStats()" class="clip-sm bg-btdGold hover:bg-btdGoldHover text-black px-5 py-2 text-xs font-tactical font-bold uppercase">Salvar Dados</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE INTERATIVIDADE -->
+    <script>
+        lucide.createIcons();
+
+        const TWITCH_CHANNEL = "atom_zip";
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hostname = window.location.hostname || "localhost";
+            const player = document.getElementById("twitchPlayer");
+            const chat = document.getElementById("twitchChat");
+            
+            player.src = `https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${hostname}&parent=localhost&parent=127.0.0.1&muted=false`;
+            chat.src = `https://www.twitch.tv/embed/${TWITCH_CHANNEL}/chat?parent=${hostname}&parent=localhost&parent=127.0.0.1&darkpopout`;
+
+            loadSavedBloonsStats();
+        });
+
+        function copyPixKey() {
+            const pixText = document.getElementById("pixKey").innerText;
+            navigator.clipboard.writeText(pixText).then(() => {
+                const btnText = document.getElementById("copyBtnText");
+                btnText.innerText = "Copiado! ✓";
+                setTimeout(() => {
+                    btnText.innerText = "Copiar";
+                }, 2000);
+            });
+        }
+
+        function toggleBloonsStatsModal() {
+            const modal = document.getElementById("bloonsModal");
+            modal.classList.toggle("hidden");
+        }
+
+        function saveBloonsStats() {
+            const stats = {
+                level: document.getElementById("inputLevel").value,
+                chimps: document.getElementById("inputChimps").value,
+                paragons: document.getElementById("inputParagons").value,
+                bosses: document.getElementById("inputBosses").value,
+                round: document.getElementById("inputRound").value,
+                hero: document.getElementById("inputHero").value,
+            };
+
+            localStorage.setItem("atom_btd6_stats", JSON.stringify(stats));
+            applyBloonsStats(stats);
+            toggleBloonsStatsModal();
+        }
+
+        function loadSavedBloonsStats() {
+            const saved = localStorage.getItem("atom_btd6_stats");
+            if (saved) {
+                try {
+                    const stats = JSON.parse(saved);
+                    applyBloonsStats(stats);
+                    if(stats.level) document.getElementById("inputLevel").value = stats.level;
+                    if(stats.chimps) document.getElementById("inputChimps").value = stats.chimps;
+                    if(stats.paragons) document.getElementById("inputParagons").value = stats.paragons;
+                    if(stats.bosses) document.getElementById("inputBosses").value = stats.bosses;
+                    if(stats.round) document.getElementById("inputRound").value = stats.round;
+                    if(stats.hero) document.getElementById("inputHero").value = stats.hero;
+                } catch(e) {}
+            }
+        }
+
+        function applyBloonsStats(stats) {
+            if(stats.level) document.getElementById("statLevel").innerText = stats.level;
+            if(stats.chimps) document.getElementById("statChimps").innerText = stats.chimps;
+            if(stats.paragons) document.getElementById("statParagons").innerText = stats.paragons;
+            if(stats.bosses) document.getElementById("statBosses").innerText = stats.bosses;
+            if(stats.round) document.getElementById("statRound").innerText = stats.round;
+            if(stats.hero) document.getElementById("heroDisplay").innerText = stats.hero;
+        }
+    </script>
+</body>
+</html>
