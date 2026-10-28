@@ -1,40 +1,32 @@
-# Site do Streamer ATOM#zip 🎮
+# Portal Gamer & Streamer ATOM#zip 🎮
 
-Site moderno, responsivo e estilizado com a estética do **Valorant** para o canal de lives do **ATOM#zip** na Twitch.
+Site moderno, responsivo e estruturado em formato **Multi-Gaming Portal** para o canal de lives do **ATOM#zip** na Twitch.
 
 - **Canal Oficial da Twitch:** [https://www.twitch.tv/atom_zip](https://www.twitch.tv/atom_zip)
-- **Rank Atual:** Bronze 3 (Rumo ao Prata)
-- **K/D Ratio:** 0.63
-- **Headshot %:** 13.9%
-- **ACS:** 140.7
-- **Taxa de Vitória:** 56.4%
-- **Mains:** KAY/O (Iniciador), Omen (Controlador), Phoenix (Duelista)
+- **Perfil no Tracker Network:** [https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319](https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319)
+- **Site Online (GitHub Pages):** [https://atom-zip.github.io/atom-sites/](https://atom-zip.github.io/atom-sites/)
 
 ---
 
-## 🚀 Como Visualizar o Site Agora
+## 🗺️ Estrutura do Site:
 
-1. Abra a pasta `c:\Users\atom0\OneDrive\Desktop\AntiGravity`.
-2. Dê um duplo clique no arquivo [`index.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/index.html).
-3. O site abrirá diretamente no seu navegador padrão (Google Chrome, Edge, etc.)!
+1. **[`index.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/index.html) (Portal Principal Multi-Gaming):**
+   - Apresentação geral do streamer multi-jogos.
+   - Player ao vivo da Twitch (`atom_zip`) com chat integrado.
+   - **Catálogo de Jogos da Live:**
+     - 🎯 **Valorant:** Botão com link direto para a página dedicada [`valorant.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/valorant.html).
+     - 💥 **Counter-Strike 2:** Premier, ranked e clutches.
+     - 👻 **Terror & Sobrevivência:** Phasmophobia, Lethal Company, madrugadas do susto.
+     - 👥 **Jogando com Viewers:** Gartic, Roblox, Minecraft, lobbies abertos no Discord.
+     - 🗡️ **RPGs & Lançamentos:** Campanhas completas e novidades do ano.
+     - 🗳️ **Votação de Próximo Jogo:** Enquetes com o chat no Discord.
+   - Cronograma semanal multi-gêneros.
+   - Doação via Pix e Redes Sociais.
 
----
-
-## 🎯 O que foi adicionado na versão atual:
-
-1. **Twitch `atom_zip` Integrada:**
-   - Player da live e chat da Twitch já configurados nativamente para o seu canal `atom_zip`.
-   - Botões diretos para seguir e abrir a Twitch em nova aba.
-
-2. **Seção Valorant Tracker Network Completa:**
-   - Link direto e verificado para o perfil [ATOM#zip no Tracker.gg](https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319).
-   - Botão para copiar a tag Riot ID (`ATOM#zip`) com 1 clique.
-   - Cards com **Elo/Rank Atual, K/D Ratio, Headshot %, Dano Médio/Round (ADR), Win Rate % e Partidas**.
-   - Seção de **Top Agentes** (Jett, Reyna, Omen) e **Precisão de Armas** (Vandal, Phantom, Operator).
-   - **Editor Rápido de Stats (Local):** Botão *"Ajustar Dados"* que permite você alterar seu rank, K/D e porcentagens em tempo real, ficando salvo automaticamente no seu navegador.
-
-3. **Demais Recursos Gamer:**
-   - Sensibilidade, monitor 240Hz, fone e mira.
-   - Cronograma semanal de transmissões.
-   - Chave Pix com cópia automática.
-   - Links para Discord, YouTube, TikTok e Instagram.
+2. **[`valorant.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/valorant.html) (Hub Exclusivo do Valorant):**
+   - Estética tática oficial do Valorant.
+   - Link de volta para o Hub Principal.
+   - Dados reais do Tracker.gg: **Bronze 3**, K/D 0.63, Headshot 13.9%, Win Rate 56.4%, ACS 140.7.
+   - Mains: **KAY/O**, **Omen** e **Phoenix**.
+   - Painel interativo para ajustar estatísticas.
+   - Sensibilidade e periféricos.

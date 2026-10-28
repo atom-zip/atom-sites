@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATOM#zip | Streamer de Valorant & Tracker Oficial</title>
+    
+    <!-- Google Fonts: Chakra Petch + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        valDark: '#0f1923',
+                        valDarker: '#080d12',
+                        valCard: '#15222e',
+                        valRed: '#ff4655',
+                        valRedHover: '#e03b49',
+                        valCyan: '#0eceab',
+                        trnOrange: '#fa4454',
+                    },
+                    fontFamily: {
+                        tactical: ['"Chakra Petch"', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Estilo tático com cortes angulares estilo Valorant */
+        .val-clip {
+            clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+        }
+        .val-clip-sm {
+            clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+        }
+        
+        /* Grid tático de fundo */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 70, 85, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 70, 85, 0.05) 1px, transparent 1px);
+        }
+
+        /* Efeito de brilho */
+        .glow-red {
+            box-shadow: 0 0 25px rgba(255, 70, 85, 0.35);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(14, 206, 171, 0.35);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080d12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff4655;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-valDarker text-gray-200 font-sans selection:bg-valRed selection:text-white bg-grid min-h-screen flex flex-col justify-between">
+
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-valDarker/90 border-b border-valRed/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo / Nick -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 bg-valRed flex items-center justify-center font-tactical font-bold text-white text-xl val-clip-sm group-hover:rotate-6 transition-transform">
+                    A
+                </div>
+                <div>
+                    <span class="font-tactical text-2xl font-bold tracking-wider text-white">ATOM</span>
+                    <span class="text-xs font-bold text-valRed tracking-widest block -mt-1 font-tactical">#zip</span>
+                </div>
+            </a>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-8 font-tactical text-sm tracking-wider uppercase font-semibold">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Hub Principal
+                </a>
+                <a href="#live" class="hover:text-valRed transition-colors flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> Live
+                </a>
+                <a href="#tracker" class="text-valCyan hover:text-white transition-colors flex items-center gap-1">
+                    <i data-lucide="bar-chart-2" class="w-4 h-4"></i> Tracker Oficial
+                </a>
+                <a href="#setup" class="hover:text-valRed transition-colors">Setup & Sens</a>
+                <a href="#cronograma" class="hover:text-valRed transition-colors">Cronograma</a>
+                <a href="#apoie" class="hover:text-valRed transition-colors">Apoiar (Pix)</a>
+            </nav>
+
+            <!-- Botão Twitch Oficial -->
+            <div class="flex items-center gap-3">
+                <a id="navTwitchBtn" href="https://www.twitch.tv/atom_zip" target="_blank" class="val-clip-sm bg-valRed hover:bg-valRedHover text-white px-5 py-2.5 font-tactical font-bold tracking-wider uppercase text-sm flex items-center gap-2 glow-red transition-all transform hover:-translate-y-0.5">
+                    <i data-lucide="tv" class="w-4 h-4"></i>
+                    <span>twitch.tv/atom_zip</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO SECTION -->
+        <section class="relative pt-12 pb-20 overflow-hidden">
+            <!-- Detalhe decorativo de fundo -->
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-valRed/15 blur-[120px] rounded-full pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Apresentação -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-valCard border border-valRed/30 val-clip-sm text-xs font-tactical uppercase tracking-widest text-valRed">
+                            <span class="w-2 h-2 rounded-full bg-valRed animate-pulse"></span>
+                            Live Streamer & FPS Player
+                        </div>
+
+                        <h1 class="font-tactical text-5xl sm:text-7xl font-extrabold text-white tracking-tight uppercase leading-none">
+                            Dominando a mira com <span class="text-transparent bg-clip-text bg-gradient-to-r from-valRed via-rose-500 to-amber-500">ATOM#zip</span>
+                        </h1>
+
+                        <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                            Transmissões diárias com clutches insanos, muita gameplay de <strong>Valorant</strong>, bom humor e integração total com o chat. Puxa a cadeira e vem pro round!
+                        </p>
+
+                        <!-- Botões de Ação -->
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#live" class="val-clip bg-valRed hover:bg-valRedHover text-white px-8 py-3.5 font-tactical font-bold text-base tracking-wider uppercase flex items-center gap-2 glow-red transition-all">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+                                Assistir Live
+                            </a>
+                            <a href="#tracker" class="val-clip bg-cyan-950/60 border border-valCyan text-valCyan hover:bg-valCyan hover:text-black px-7 py-3.5 font-tactical font-bold text-base tracking-wider uppercase transition-all flex items-center gap-2">
+                                <i data-lucide="crosshair" class="w-4 h-4"></i>
+                                Ver Tracker Oficial
+                            </a>
+                        </div>
+
+                        <!-- Stats Rápidas -->
+                        <div class="grid grid-cols-3 gap-4 pt-6 max-w-lg mx-auto lg:mx-0 border-t border-gray-800">
+                            <div>
+                                <span class="font-tactical text-2xl sm:text-3xl font-bold text-white block">1080p</span>
+                                <span class="text-xs text-gray-400 uppercase tracking-wider">Qualidade 60fps</span>
+                            </div>
+                            <div>
+                                <span class="font-tactical text-2xl sm:text-3xl font-bold text-valRed block">VALORANT</span>
+                                <span class="text-xs text-gray-400 uppercase tracking-wider">Foco Competitivo</span>
+                            </div>
+                            <div>
+                                <span class="font-tactical text-2xl sm:text-3xl font-bold text-valCyan block">DIÁRIO</span>
+                                <span class="text-xs text-gray-400 uppercase tracking-wider">Lives na Twitch</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Visual do Streamer / Tag -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <!-- Moldura Tática -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-valRed to-rose-700 val-clip opacity-75 blur-sm"></div>
+                            
+                            <div class="relative bg-valCard p-6 val-clip border border-valRed/40 space-y-6">
+                                <div class="flex items-center justify-between border-b border-gray-700/60 pb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-full bg-valDark border-2 border-valRed flex items-center justify-center font-tactical font-bold text-xl text-valRed">
+                                            #z
+                                        </div>
+                                        <div>
+                                            <h3 class="font-tactical text-xl font-bold text-white flex items-center gap-2">
+                                                ATOM<span class="text-valRed">#zip</span>
+                                                <button onclick="copyRiotId()" title="Copiar Riot ID" class="text-gray-400 hover:text-white transition">
+                                                    <i data-lucide="copy" class="w-4 h-4"></i>
+                                                </button>
+                                            </h3>
+                                            <p class="text-xs text-valCyan font-mono">RIOT ID: ATOM#zip</p>
+                                        </div>
+                                    </div>
+                                    <span class="px-2.5 py-1 bg-green-950 text-green-400 border border-green-800 text-xs font-tactical font-bold uppercase rounded flex items-center gap-1.5">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span> AO VIVO
+                                    </span>
+                                </div>
+
+                                <!-- Card Game Info -->
+                                <div class="bg-valDark p-4 rounded-lg space-y-3 border border-gray-800">
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-400">Jogo Atual:</span>
+                                        <span class="font-bold text-white font-tactical tracking-wide">VALORANT</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-400">Função Principal:</span>
+                                        <span class="font-bold text-valRed font-tactical">Iniciador / Flex</span>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-400">Canal Twitch:</span>
+                                        <a href="https://www.twitch.tv/atom_zip" target="_blank" class="font-mono text-xs text-valCyan font-semibold hover:underline">
+                                            twitch.tv/atom_zip
+                                        </a>
+                                    </div>
+                                    <div class="flex justify-between items-center text-sm">
+                                        <span class="text-gray-400">Tracker Network:</span>
+                                        <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" class="font-mono text-xs text-amber-400 font-semibold hover:underline flex items-center gap-1">
+                                            tracker.gg/profile <i data-lucide="external-link" class="w-3 h-3"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="text-xs text-gray-500 font-mono flex items-center justify-between pt-2">
+                                    <span>STATUS: PRONTO PRO COMBATE</span>
+                                    <span>SERVIDOR: BR (SÃO PAULO)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: TRANSMISSÃO AO VIVO (TWITCH EMBED ATOM_ZIP) -->
+        <section id="live" class="py-16 bg-valDark relative border-y border-valRed/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                    <div>
+                        <div class="text-valRed font-tactical font-bold text-sm tracking-widest uppercase mb-1 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
+                            Transmissão Oficial Twitch
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-tactical font-bold text-white uppercase">Assista Ao Vivo: ATOM_ZIP</h2>
+                    </div>
+
+                    <!-- Botão direto para Twitch -->
+                    <div class="mt-4 md:mt-0 flex items-center gap-3">
+                        <a href="https://www.twitch.tv/atom_zip" target="_blank" 
+                           class="bg-[#9146ff] hover:bg-[#772ce8] text-white px-4 py-2 rounded text-xs font-tactical font-bold uppercase tracking-wider flex items-center gap-2 transition shadow-lg">
+                            <i data-lucide="tv" class="w-4 h-4"></i>
+                            Seguir atom_zip na Twitch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Container do Player e Chat -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                    
+                    <!-- Player da Live -->
+                    <div class="lg:col-span-8 bg-black rounded-lg overflow-hidden border border-gray-800 shadow-2xl aspect-video relative group">
+                        <iframe
+                            id="twitchPlayer"
+                            src="https://player.twitch.tv/?channel=atom_zip&parent=localhost&parent=127.0.0.1&muted=false"
+                            class="w-full h-full"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+
+                    <!-- Chat da Twitch -->
+                    <div class="lg:col-span-4 bg-valCard rounded-lg border border-gray-800 flex flex-col h-[420px] lg:h-auto overflow-hidden">
+                        <div class="bg-valDarker px-4 py-2.5 border-b border-gray-800 flex items-center justify-between">
+                            <span class="font-tactical text-sm font-bold uppercase text-white flex items-center gap-2">
+                                <i data-lucide="message-square" class="w-4 h-4 text-valRed"></i> Chat da Live
+                            </span>
+                            <span class="text-[11px] text-green-400 font-mono">Conectado</span>
+                        </div>
+                        <div class="flex-grow bg-black">
+                            <iframe
+                                id="twitchChat"
+                                src="https://www.twitch.tv/embed/atom_zip/chat?parent=localhost&parent=127.0.0.1&darkpopout"
+                                class="w-full h-full">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-valDarker/80 border border-gray-800 rounded flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-2">
+                    <p class="flex items-center gap-1.5">
+                        <i data-lucide="info" class="w-4 h-4 text-valCyan"></i>
+                        <span>Transmitindo ao vivo em alta definição pelo canal <strong>atom_zip</strong> na Twitch.</span>
+                    </p>
+                    <a href="https://www.twitch.tv/atom_zip" target="_blank" class="text-valRed hover:underline font-bold flex items-center gap-1">
+                        Abrir página completa na Twitch <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: VALORANT TRACKER NETWORK (ATOM#zip) -->
+        <section id="tracker" class="py-20 relative bg-valDarker">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Cabeçalho do Tracker -->
+                <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 border-b border-gray-800 pb-6 gap-4">
+                    <div>
+                        <div class="flex items-center gap-2 text-valCyan font-tactical font-bold text-sm tracking-widest uppercase">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i> Estatísticas Verificadas
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-tactical font-extrabold text-white uppercase mt-1 flex items-center gap-3">
+                            VALORANT TRACKER <span class="text-valRed font-mono text-2xl sm:text-3xl font-normal">ATOM#zip</span>
+                        </h2>
+                        <p class="text-gray-400 text-sm mt-1">
+                            Histórico competitivo, taxa de headshot, K/D e desempenho individual no Valorant.
+                        </p>
+                    </div>
+
+                    <!-- Botão oficial Tracker.gg -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button onclick="toggleEditStatsModal()" class="bg-valCard hover:bg-gray-700 text-gray-300 hover:text-white px-4 py-2.5 rounded font-tactical text-xs font-bold uppercase tracking-wider border border-gray-700 flex items-center gap-2 transition">
+                            <i data-lucide="edit-3" class="w-4 h-4"></i> Ajustar Dados
+                        </button>
+                        <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" 
+                           class="val-clip-sm bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white px-5 py-2.5 font-tactical text-sm font-bold tracking-wider uppercase flex items-center gap-2 shadow-lg transition transform hover:-translate-y-0.5">
+                            <span>Abrir Perfil no Tracker.gg</span>
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARDS DE ESTATÍSTICAS DO TRACKER -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+                    
+                    <!-- Elo / Rank Atual -->
+                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-amber-600 relative">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Rank Atual</span>
+                        <div id="statRank" class="font-tactical text-xl sm:text-2xl font-bold text-amber-500 mt-1">BRONZE 3</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Rumo ao Prata</span>
+                    </div>
+
+                    <!-- K/D Ratio -->
+                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-valCyan relative">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">K/D Ratio</span>
+                        <div id="statKD" class="font-tactical text-2xl sm:text-3xl font-bold text-valCyan mt-1">0.63</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Foco em Suporte</span>
+                    </div>
+
+                    <!-- Headshot % -->
+                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-valRed relative">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Headshot %</span>
+                        <div id="statHS" class="font-tactical text-2xl sm:text-3xl font-bold text-valRed mt-1">13.9%</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Precisão Tracker</span>
+                    </div>
+
+                    <!-- ACS (Average Combat Score) -->
+                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-purple-500 relative">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Pontuação / ACS</span>
+                        <div id="statADR" class="font-tactical text-2xl sm:text-3xl font-bold text-purple-400 mt-1">140.7</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Pontuação de Combate</span>
+                    </div>
+
+                    <!-- Win Rate % -->
+                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-green-500 relative">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Taxa de Vitória</span>
+                        <div id="statWinRate" class="font-tactical text-2xl sm:text-3xl font-bold text-green-400 mt-1">56.4%</div>
+                        <span class="text-[10px] text-green-400 font-mono mt-1 block">56% Mais Vitórias!</span>
+                    </div>
+
+                    <!-- Partidas / Status -->
+                    <div class="bg-valCard p-5 rounded-lg border-t-2 border-blue-500 relative">
+                        <span class="text-[11px] font-mono text-gray-400 uppercase tracking-wider block">Status Competitivo</span>
+                        <div id="statMatches" class="font-tactical text-xl sm:text-2xl font-bold text-blue-400 mt-1">ATIVO</div>
+                        <span class="text-[10px] text-gray-400 font-mono mt-1 block">Temporada Oficial</span>
+                    </div>
+
+                </div>
+
+                <!-- SEGUNDA LINHA: TOP AGENTES & TOP ARMAS -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    
+                    <!-- Melhores Agentes do Tracker -->
+                    <div class="lg:col-span-7 bg-valCard p-6 val-clip border border-gray-800">
+                        <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
+                            <h3 class="font-tactical text-lg font-bold text-white uppercase flex items-center gap-2">
+                                <i data-lucide="users" class="w-5 h-5 text-valRed"></i> Agentes Principais (Mains)
+                            </h3>
+                            <span class="text-xs font-mono text-gray-400">Tracker Oficial</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Agente 1: KAY/O -->
+                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-cyan-800/40">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded bg-cyan-950/60 border border-cyan-500/50 flex items-center justify-center font-tactical font-bold text-cyan-400 text-sm">
+                                        KAY
+                                    </div>
+                                    <div>
+                                        <div class="font-tactical font-bold text-white text-base">KAY/O</div>
+                                        <div class="text-xs text-gray-400 font-mono">Iniciador • Supressão & Facas de Detecção</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-tactical font-bold text-cyan-400">MAIN 1</div>
+                                    <div class="text-xs text-green-400 font-mono">Suporte ao Time</div>
+                                </div>
+                            </div>
+
+                            <!-- Agente 2: Omen -->
+                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-purple-800/40">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded bg-purple-950/60 border border-purple-500/50 flex items-center justify-center font-tactical font-bold text-purple-400 text-sm">
+                                        OME
+                                    </div>
+                                    <div>
+                                        <div class="font-tactical font-bold text-white text-base">OMEN</div>
+                                        <div class="text-xs text-gray-400 font-mono">Controlador • Smokes Táticas & Paranoia</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-tactical font-bold text-purple-400">MAIN 2</div>
+                                    <div class="text-xs text-green-400 font-mono">Domínio de Mapa</div>
+                                </div>
+                            </div>
+
+                            <!-- Agente 3: Phoenix -->
+                            <div class="bg-valDark p-3.5 rounded flex items-center justify-between border border-amber-800/40">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded bg-amber-950/60 border border-amber-500/50 flex items-center justify-center font-tactical font-bold text-amber-400 text-sm">
+                                        PHX
+                                    </div>
+                                    <div>
+                                        <div class="font-tactical font-bold text-white text-base">PHOENIX</div>
+                                        <div class="text-xs text-gray-400 font-mono">Duelista • Flashes Curvos & Entrada Quente</div>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-tactical font-bold text-amber-400">MAIN 3</div>
+                                    <div class="text-xs text-green-400 font-mono">Entry Fragger</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Armas do Tracker -->
+                    <div class="lg:col-span-5 bg-valCard p-6 val-clip border border-gray-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-3">
+                                <h3 class="font-tactical text-lg font-bold text-white uppercase flex items-center gap-2">
+                                    <i data-lucide="crosshair" class="w-5 h-5 text-valCyan"></i> Precisão por Arma
+                                </h3>
+                                <span class="text-xs font-mono text-gray-400">HS %</span>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs font-tactical font-bold text-white mb-1">
+                                        <span>VANDAL</span>
+                                        <span class="text-valRed">36% HS (680 Abates)</span>
+                                    </div>
+                                    <div class="w-full bg-valDarker h-2 rounded-full overflow-hidden">
+                                        <div class="bg-valRed h-full rounded-full" style="width: 72%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs font-tactical font-bold text-white mb-1">
+                                        <span>PHANTOM</span>
+                                        <span class="text-valCyan">30% HS (240 Abates)</span>
+                                    </div>
+                                    <div class="w-full bg-valDarker h-2 rounded-full overflow-hidden">
+                                        <div class="bg-valCyan h-full rounded-full" style="width: 48%"></div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="flex justify-between text-xs font-tactical font-bold text-white mb-1">
+                                        <span>OPERATOR</span>
+                                        <span class="text-amber-400">82% Dano Fatal (110 Abates)</span>
+                                    </div>
+                                    <div class="w-full bg-valDarker h-2 rounded-full overflow-hidden">
+                                        <div class="bg-amber-400 h-full rounded-full" style="width: 35%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card de Atalho para Overwolf Tracker -->
+                        <div class="mt-6 pt-4 border-t border-gray-800 flex items-center justify-between text-xs text-gray-400">
+                            <span class="flex items-center gap-1.5 font-mono">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i> Integrado ao Tracker.gg
+                            </span>
+                            <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" class="text-valRed hover:underline font-bold font-tactical uppercase">
+                                Ver Detalhes ➜
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: SETUP & SENSIBILIDADE -->
+        <section id="setup" class="py-16 bg-valDark border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <div class="text-valCyan font-tactical font-bold text-sm tracking-widest uppercase">Periféricos & Configurações</div>
+                    <h2 class="text-3xl sm:text-4xl font-tactical font-bold text-white uppercase mt-1">Configuração & Setup</h2>
+                    <p class="text-gray-400 text-sm mt-2">As configs e equipamentos que o <strong>ATOM#zip</strong> usa nas partidas.</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    
+                    <div class="bg-valCard/60 border border-gray-800 p-4 rounded text-center">
+                        <i data-lucide="mouse" class="w-6 h-6 text-valRed mx-auto mb-2"></i>
+                        <span class="text-xs text-gray-400 uppercase block font-mono">Sensibilidade</span>
+                        <span class="font-tactical font-bold text-lg text-white">0.32 @ 800 DPI</span>
+                        <span class="text-[10px] text-gray-500 block">eDPI: 256</span>
+                    </div>
+
+                    <div class="bg-valCard/60 border border-gray-800 p-4 rounded text-center">
+                        <i data-lucide="monitor" class="w-6 h-6 text-valCyan mx-auto mb-2"></i>
+                        <span class="text-xs text-gray-400 uppercase block font-mono">Monitor & Res</span>
+                        <span class="font-tactical font-bold text-lg text-white">240Hz 1ms</span>
+                        <span class="text-[10px] text-gray-500 block">1920x1080 (16:9)</span>
+                    </div>
+
+                    <div class="bg-valCard/60 border border-gray-800 p-4 rounded text-center">
+                        <i data-lucide="crosshair" class="w-6 h-6 text-amber-400 mx-auto mb-2"></i>
+                        <span class="text-xs text-gray-400 uppercase block font-mono">Mira (Crosshair)</span>
+                        <span class="font-tactical font-bold text-lg text-white">1-4-2-2 Ciano</span>
+                        <span class="text-[10px] text-gray-500 block">Sem ponto central</span>
+                    </div>
+
+                    <div class="bg-valCard/60 border border-gray-800 p-4 rounded text-center">
+                        <i data-lucide="headphones" class="w-6 h-6 text-purple-400 mx-auto mb-2"></i>
+                        <span class="text-xs text-gray-400 uppercase block font-mono">Áudio / Fone</span>
+                        <span class="font-tactical font-bold text-lg text-white">HyperX Cloud II</span>
+                        <span class="text-[10px] text-gray-500 block">Áudio Espacial Estéreo</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: CRONOGRAMA DE LIVES -->
+        <section id="cronograma" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <div class="text-valRed font-tactical font-bold text-sm tracking-widest uppercase">Horários Semanais</div>
+                        <h2 class="text-3xl sm:text-4xl font-tactical font-bold text-white uppercase mt-1">Cronograma de Lives</h2>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-2 md:mt-0 font-mono">
+                        Transmissões em <a href="https://www.twitch.tv/atom_zip" target="_blank" class="text-valRed underline">twitch.tv/atom_zip</a> (BRT)
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    
+                    <div class="bg-valCard p-5 border border-gray-800 rounded relative group">
+                        <span class="text-xs font-tactical font-bold text-valRed uppercase tracking-wider">Segunda-Feira</span>
+                        <h4 class="font-tactical text-xl font-bold text-white mt-1">19:00 - 23:00</h4>
+                        <p class="text-xs text-gray-400 mt-2">Competitivo Valorant & Treino de Mira</p>
+                    </div>
+
+                    <div class="bg-valCard p-5 border border-gray-800 rounded relative group">
+                        <span class="text-xs font-tactical font-bold text-valRed uppercase tracking-wider">Terça-Feira</span>
+                        <h4 class="font-tactical text-xl font-bold text-white mt-1">19:00 - 23:00</h4>
+                        <p class="text-xs text-gray-400 mt-2">Jogando com viewers & Duo rank</p>
+                    </div>
+
+                    <div class="bg-valCard p-5 border border-gray-800 rounded relative group">
+                        <span class="text-xs font-tactical font-bold text-valRed uppercase tracking-wider">Quinta-Feira</span>
+                        <h4 class="font-tactical text-xl font-bold text-white mt-1">19:00 - 23:00</h4>
+                        <p class="text-xs text-gray-400 mt-2">Ranked grind rumo ao Radiante</p>
+                    </div>
+
+                    <div class="bg-valCard p-5 border border-gray-800 rounded relative group">
+                        <span class="text-xs font-tactical font-bold text-valCyan uppercase tracking-wider">Sexta-Feira</span>
+                        <h4 class="font-tactical text-xl font-bold text-white mt-1">20:00 - MADRUGA</h4>
+                        <p class="text-xs text-gray-400 mt-2">Sextou: Valorant + Outros Jogos</p>
+                    </div>
+
+                    <div class="bg-valCard p-5 border border-gray-800 rounded relative group">
+                        <span class="text-xs font-tactical font-bold text-amber-400 uppercase tracking-wider">Sábado</span>
+                        <h4 class="font-tactical text-xl font-bold text-white mt-1">16:00 - 22:00</h4>
+                        <p class="text-xs text-gray-400 mt-2">Torneios, scrims e zoeira no chat</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: APOIE A LIVE (PIX / DOAÇÃO) -->
+        <section id="apoie" class="py-16 bg-valDark border-y border-valRed/20 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                
+                <div class="inline-flex p-3 bg-valRed/10 rounded-full text-valRed mb-4">
+                    <i data-lucide="heart" class="w-8 h-8 fill-current"></i>
+                </div>
+
+                <h2 class="text-3xl sm:text-4xl font-tactical font-bold text-white uppercase">Apoie a Live do ATOM</h2>
+                <p class="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mt-2">
+                    Toda doação via Pix ajuda a melhorar a qualidade da transmissão, equipamentos e novos jogos para o canal. Qualquer valor é muito bem-vindo!
+                </p>
+
+                <div class="mt-8 bg-valCard p-6 val-clip max-w-lg mx-auto border border-valRed/40">
+                    <span class="text-xs font-mono text-gray-400 uppercase block mb-1">Chave Pix (E-mail / Aleatória)</span>
+                    
+                    <div class="flex items-center justify-between bg-valDarker p-3 rounded border border-gray-700">
+                        <code id="pixKey" class="text-sm font-mono text-valCyan truncate pr-2">seu-email-pix@aqui.com</code>
+                        <button onclick="copyPixKey()" class="bg-valRed hover:bg-valRedHover text-white px-3 py-1.5 rounded text-xs font-tactical font-bold uppercase flex items-center gap-1.5 transition">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span id="copyBtnText">Copiar</span>
+                        </button>
+                    </div>
+
+                    <p class="text-[11px] text-gray-500 mt-3 font-mono">
+                        Mensagens no Pix com valor acima de R$ 2,00 podem aparecer na tela durante a live!
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SEÇÃO: REDES SOCIAIS & COMUNIDADE -->
+        <section id="redes" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-xl mx-auto mb-12">
+                    <div class="text-valRed font-tactical font-bold text-sm tracking-widest uppercase">Fique por dentro</div>
+                    <h2 class="text-3xl sm:text-4xl font-tactical font-bold text-white uppercase mt-1">Entre na Comunidade</h2>
+                    <p class="text-gray-400 text-sm mt-2">Siga o ATOM_ZIP nas redes para avisos de lives, clipes e resenha.</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    
+                    <!-- Twitch atom_zip -->
+                    <a href="https://www.twitch.tv/atom_zip" target="_blank" class="bg-valCard hover:bg-purple-950/40 border border-gray-800 hover:border-purple-500 p-5 rounded text-center transition group">
+                        <i data-lucide="tv" class="w-8 h-8 text-[#9146ff] mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-tactical font-bold text-white block">Twitch</span>
+                        <span class="text-[11px] text-gray-400 font-mono">atom_zip</span>
+                    </a>
+
+                    <!-- Tracker Network -->
+                    <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" class="bg-valCard hover:bg-red-950/40 border border-gray-800 hover:border-red-500 p-5 rounded text-center transition group">
+                        <i data-lucide="crosshair" class="w-8 h-8 text-valRed mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-tactical font-bold text-white block">Tracker.gg</span>
+                        <span class="text-[11px] text-gray-400 font-mono">ATOM#zip</span>
+                    </a>
+
+                    <!-- Discord -->
+                    <a href="https://discord.gg" target="_blank" class="bg-valCard hover:bg-indigo-950/40 border border-gray-800 hover:border-indigo-500 p-5 rounded text-center transition group">
+                        <i data-lucide="message-circle" class="w-8 h-8 text-indigo-400 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-tactical font-bold text-white block">Discord</span>
+                        <span class="text-[11px] text-gray-400 font-mono">Comunidade</span>
+                    </a>
+
+                    <!-- YouTube -->
+                    <a href="https://youtube.com" target="_blank" class="bg-valCard hover:bg-red-950/40 border border-gray-800 hover:border-red-500 p-5 rounded text-center transition group">
+                        <i data-lucide="youtube" class="w-8 h-8 text-red-500 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-tactical font-bold text-white block">YouTube</span>
+                        <span class="text-[11px] text-gray-400 font-mono">Melhores Momentos</span>
+                    </a>
+
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com" target="_blank" class="bg-valCard hover:bg-pink-950/40 border border-gray-800 hover:border-pink-500 p-5 rounded text-center transition group">
+                        <i data-lucide="video" class="w-8 h-8 text-pink-400 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-tactical font-bold text-white block">TikTok</span>
+                        <span class="text-[11px] text-gray-400 font-mono">Clipes Rápidos</span>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com" target="_blank" class="bg-valCard hover:bg-amber-950/40 border border-gray-800 hover:border-amber-500 p-5 rounded text-center transition group">
+                        <i data-lucide="instagram" class="w-8 h-8 text-amber-400 mx-auto mb-2 group-hover:scale-110 transition-transform"></i>
+                        <span class="font-tactical font-bold text-white block">Instagram</span>
+                        <span class="text-[11px] text-gray-400 font-mono">Stories & Rotina</span>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-valDarker border-t border-gray-800/80 py-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-2">
+            <div class="flex items-center justify-center gap-2 font-tactical font-bold text-sm text-gray-300">
+                <span class="text-valRed">ATOM#zip</span> • TRANSMISSÕES DE GAMES NA TWITCH (atom_zip)
+            </div>
+            <p>© 2026 ATOM#zip. Todos os direitos reservados. Perfil do Tracker.gg: <a href="https://tracker.gg/valorant/profile/riot/ATOM%23zip/overview?platform=pc&playlist=competitive&season=d816f426-48ea-f052-117f-9697a155b319" target="_blank" class="text-valCyan underline">ATOM#zip</a>.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DE EDIÇÃO DE STATS -->
+    <div id="statsModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-valCard p-6 max-w-md w-full val-clip border border-valRed/60 space-y-4">
+            <div class="flex items-center justify-between border-b border-gray-700 pb-3">
+                <h3 class="font-tactical font-bold text-white text-lg uppercase flex items-center gap-2">
+                    <i data-lucide="sliders" class="w-5 h-5 text-valRed"></i> Atualizar Stats do Tracker
+                </h3>
+                <button onclick="toggleEditStatsModal()" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="block text-gray-400 text-xs font-mono mb-1">Rank / Elo Atual:</label>
+                    <input id="inputRank" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-tactical focus:border-valRed focus:outline-none" value="BRONZE 3">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-gray-400 text-xs font-mono mb-1">K/D Ratio:</label>
+                        <input id="inputKD" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="0.63">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-mono mb-1">Headshot %:</label>
+                        <input id="inputHS" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="13.9%">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-gray-400 text-xs font-mono mb-1">Pontuação / ACS:</label>
+                        <input id="inputADR" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="140.7">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 text-xs font-mono mb-1">Taxa de Vitória %:</label>
+                        <input id="inputWinRate" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="56.4%">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-gray-400 text-xs font-mono mb-1">Status Competitivo:</label>
+                    <input id="inputMatches" type="text" class="w-full bg-valDarker border border-gray-700 p-2 rounded text-white font-mono focus:border-valRed focus:outline-none" value="ATIVO">
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-3 border-t border-gray-700">
+                <button onclick="toggleEditStatsModal()" class="px-4 py-2 text-xs font-tactical uppercase text-gray-400 hover:text-white">Cancelar</button>
+                <button onclick="saveCustomStats()" class="val-clip-sm bg-valRed hover:bg-valRedHover text-white px-5 py-2 text-xs font-tactical font-bold uppercase">Salvar Dados</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE INTERATIVIDADE -->
+    <script>
+        // Inicializa ícones Lucide
+        lucide.createIcons();
+
+        // Canal da Twitch fixado no oficial fornecido
+        const TWITCH_CHANNEL = "atom_zip";
+
+        // Ajusta URLs do iframe com o host atual
+        window.addEventListener('DOMContentLoaded', () => {
+            const hostname = window.location.hostname || "localhost";
+            const player = document.getElementById("twitchPlayer");
+            const chat = document.getElementById("twitchChat");
+            
+            player.src = `https://player.twitch.tv/?channel=${TWITCH_CHANNEL}&parent=${hostname}&parent=localhost&parent=127.0.0.1&muted=false`;
+            chat.src = `https://www.twitch.tv/embed/${TWITCH_CHANNEL}/chat?parent=${hostname}&parent=localhost&parent=127.0.0.1&darkpopout`;
+
+            // Carrega dados salvos no localStorage (se existirem)
+            loadSavedStats();
+        });
+
+        // Copiar Riot ID
+        function copyRiotId() {
+            navigator.clipboard.writeText("ATOM#zip").then(() => {
+                alert("Riot ID copiado: ATOM#zip ✓");
+            });
+        }
+
+        // Copiar chave Pix
+        function copyPixKey() {
+            const pixText = document.getElementById("pixKey").innerText;
+            navigator.clipboard.writeText(pixText).then(() => {
+                const btnText = document.getElementById("copyBtnText");
+                btnText.innerText = "Copiado! ✓";
+                setTimeout(() => {
+                    btnText.innerText = "Copiar";
+                }, 2000);
+            });
+        }
+
+        // Modal de Stats
+        function toggleEditStatsModal() {
+            const modal = document.getElementById("statsModal");
+            modal.classList.toggle("hidden");
+        }
+
+        // Salvar e Carregar Stats Customizadas
+        function saveCustomStats() {
+            const stats = {
+                rank: document.getElementById("inputRank").value,
+                kd: document.getElementById("inputKD").value,
+                hs: document.getElementById("inputHS").value,
+                adr: document.getElementById("inputADR").value,
+                winRate: document.getElementById("inputWinRate").value,
+                matches: document.getElementById("inputMatches").value,
+            };
+
+            localStorage.setItem("atom_valorant_stats", JSON.stringify(stats));
+            applyStats(stats);
+            toggleEditStatsModal();
+        }
+
+        function loadSavedStats() {
+            const saved = localStorage.getItem("atom_valorant_stats");
+            if (saved) {
+                try {
+                    const stats = JSON.parse(saved);
+                    applyStats(stats);
+                    // Preenche campos do modal
+                    if(stats.rank) document.getElementById("inputRank").value = stats.rank;
+                    if(stats.kd) document.getElementById("inputKD").value = stats.kd;
+                    if(stats.hs) document.getElementById("inputHS").value = stats.hs;
+                    if(stats.adr) document.getElementById("inputADR").value = stats.adr;
+                    if(stats.winRate) document.getElementById("inputWinRate").value = stats.winRate;
+                    if(stats.matches) document.getElementById("inputMatches").value = stats.matches;
+                } catch(e) {}
+            }
+        }
+
+        function applyStats(stats) {
+            if(stats.rank) document.getElementById("statRank").innerText = stats.rank;
+            if(stats.kd) document.getElementById("statKD").innerText = stats.kd;
+            if(stats.hs) document.getElementById("statHS").innerText = stats.hs;
+            if(stats.adr) document.getElementById("statADR").innerText = stats.adr;
+            if(stats.winRate) document.getElementById("statWinRate").innerText = stats.winRate;
+            if(stats.matches) document.getElementById("statMatches").innerText = stats.matches;
+        }
+    </script>
+</body>
+</html>
