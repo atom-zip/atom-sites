@@ -26,7 +26,6 @@
                         valRed: '#ff4655',
                         valRedHover: '#e03b49',
                         valCyan: '#0eceab',
-                        trnOrange: '#fa4454',
                     },
                     fontFamily: {
                         tactical: ['"Chakra Petch"', 'sans-serif'],
@@ -61,9 +60,11 @@
         .glow-red {
             box-shadow: 0 0 25px rgba(255, 70, 85, 0.35);
         }
-        .glow-cyan {
-            box-shadow: 0 0 25px rgba(14, 206, 171, 0.35);
-        }
+
+        /* Page Transition */
+        body { animation: pgIn .4s ease both; }
+        @keyframes pgIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pgOut { to { opacity:0; transform:translateY(-8px); } }
 
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -843,6 +844,18 @@
             if(stats.winRate) document.getElementById("statWinRate").innerText = stats.winRate;
             if(stats.matches) document.getElementById("statMatches").innerText = stats.matches;
         }
+
+        // Transição suave entre páginas
+        document.querySelectorAll('a[href]').forEach(a => {
+            const href = a.getAttribute('href');
+            if (href && !href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    document.body.style.animation = 'pgOut .3s ease forwards';
+                    setTimeout(() => { window.location.href = href; }, 300);
+                });
+            }
+        });
     </script>
 </body>
 </html>
