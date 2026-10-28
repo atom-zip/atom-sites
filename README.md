@@ -15,6 +15,7 @@ Site moderno, responsivo e estruturado em formato **Multi-Gaming Portal** para o
    - Player ao vivo da Twitch (`atom_zip`) com chat integrado.
    - **Catálogo de Jogos da Live:**
      - 🎯 **Valorant:** Botão com link direto para a página dedicada [`valorant.html`](file:///c:/Users/atom0/OneDrive/Desktop/AntiGravity/valorant.html).
+     - 🎈 **Bloons TD 6:** Estratégia, CHIMPS, Paragons, Boss Events e partidas cooperativas.
      - 💥 **Counter-Strike 2:** Premier, ranked e clutches.
      - 👻 **Terror & Sobrevivência:** Phasmophobia, Lethal Company, madrugadas do susto.
      - 👥 **Jogando com Viewers:** Gartic, Roblox, Minecraft, lobbies abertos no Discord.
